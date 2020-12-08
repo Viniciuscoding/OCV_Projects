@@ -12,9 +12,10 @@ matplotlib.rcParams['image.interpolation'] = 'bilinear'
 import warnings
 warnings.filterwarnings("ignore")
 
-
+# Read the image. Notice the image is read in BGR by OpenCV.
 img = cv2.imread("images/Coins.png")
 
+# Display the image. By inverting the image you get RGB.
 plt.imshow(img[:,:,::-1])
 plt.show()
 
@@ -37,11 +38,10 @@ def convertBGRtoGray(image):
 # Image manually changed to gray color
 gray = convertBGRtoGray(img)
 
-
 # OpenCV's `cvtColor` result as a verifier
 gray_cv = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
 
-
+# Display the manual results in comparison with OpenCV results
 plt.figure(figsize=(18,12))
 plt.subplot(1,3,1)
 plt.title("Result from custom function")
