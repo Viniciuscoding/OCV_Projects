@@ -10,6 +10,7 @@ matplotlib.rcParams['image.interpolation'] = 'bilinear'
 import warnings
 warnings.filterwarnings("ignore")
 
+# Read the image. Remember OpenCV reads it in BGR.
 img = cv2.imread("images/Coins.png")
 
 plt.imshow(img[:,:,::-1])
@@ -38,11 +39,15 @@ plt.show()
 
 
 def convertBGRtoHSV(image):
-    
+    # Split the channels
     imgB, imgG, imgR = cv2.split(image)
+    # Normalize them to between 0 and 1 as a float number
     b, g, r = imgB/255.0, imgG/255.0, imgR/255.0
     
+    # Get the height(h) and width(w) of the image
     h, w, _ = image.shape
+    
+    # Create an empty image of the same size of the original image
     hsv = np.zeros((h, w, 3), dtype = np.uint8)
     
     H, S, V = 0.0, 0.0, 0.0
