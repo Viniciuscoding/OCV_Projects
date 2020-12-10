@@ -85,7 +85,7 @@ hsv = convertBGRtoHSV(img)
 
 hsv_cv = cv2.cvtColor(img,cv2.COLOR_BGR2HSV)
 
-
+# Displaying the results
 plt.subplot(1,3,1)
 plt.title("Result from custom function")
 plt.imshow(hsv[:,:,::-1])
